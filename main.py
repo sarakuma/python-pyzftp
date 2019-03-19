@@ -254,7 +254,7 @@ def main(template_path):
             keylst = list(request.forms.keys())
             trnsfr1lst = [key for key in keylst if "trsfrno" in key]
             trnsfr2lst = [int(key.replace("trsfrno","")) for key in trnsfr1lst]
-            
+
             machine = request.forms.get("machine")
             userid = request.forms.get("userid")
             pswd = request.forms.get("pswd")
@@ -343,7 +343,7 @@ def main(template_path):
         return template("zftpstatus", statuses=statuses)
 
 
-    run(host="localhost", port=9001, debug=True) #uses socket - localhost:9090
+    run(host="localhost", port=9001, debug=True) #uses socket - localhost:9001
 
     return
 
