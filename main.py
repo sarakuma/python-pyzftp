@@ -267,7 +267,8 @@ def main(template_path):
             
             #try catch credentials error
             try:
-                host.login(userid, pswd)
+                if ismachineExist:
+                    host.login(userid, pswd)
             except:
                 iscredExist = False
                 host.quit()
