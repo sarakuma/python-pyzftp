@@ -13,8 +13,8 @@ bottle micro web framework 0.13
 * suffice error handling and feedback
 
 ## usage
-python main.py
-launch browser @socket - http://localhost:9001/zftp
+1. python main.py
+2. launch browser @socket - http://localhost:9001/zftp
 
 
 
