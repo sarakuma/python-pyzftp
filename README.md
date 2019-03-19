@@ -7,8 +7,8 @@ repo hold scripts that are needed to transfer multiple text/binary files in and 
 ## dependencies
 bottle micro web framework 0.13
 
-## targeted ftp-server
-mainframe
+## usage
+mainframe ftp-server
 
 ## benefits
 * multi-threaded transfer for quick turn-arounds
