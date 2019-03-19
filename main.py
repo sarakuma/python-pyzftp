@@ -250,6 +250,11 @@ def main(template_path):
             isfileExist = True
             iserror = False
 
+            #get all the name attributes from the submitted form
+            keylst = list(request.forms.keys())
+            trnsfr1lst = [key for key in keylst if "trsfrno" in key]
+            trnsfr2lst = [int(key.replace("trsfrno","")) for key in trnsfr1lst]
+            
             machine = request.forms.get("machine")
             userid = request.forms.get("userid")
             pswd = request.forms.get("pswd")
@@ -259,7 +264,6 @@ def main(template_path):
                 host = FTP(machine)
             except:
                 ismachineExist = False
-                host.quit()
             
             #try catch credentials error
             try:
@@ -273,11 +277,6 @@ def main(template_path):
                 anyerror = True
 
             threads = []
-
-            #get all the name attributes from the submitted form
-            keylst = list(request.forms.keys())
-            trnsfr1lst = [key for key in keylst if "trsfrno" in key]
-            trnsfr2lst = [int(key.replace("trsfrno","")) for key in trnsfr1lst]
 
             for trsfrno in trnsfr2lst:
                 ckey1 = "ftpverb-radio" + str(trsfrno)
