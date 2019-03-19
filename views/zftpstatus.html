@@ -1,0 +1,63 @@
+<DOCTYPE! html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>zFTP-Status</title>
+            <link href="/static/zftpstatus.css" rel="stylesheet" type="text/css">
+            <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+        </head>
+        <body class="body-container">
+            <header>
+                <h1>Quick & easy file transfers for mainframe folks</h1>
+            </header>
+            <section class="section-container">
+                <form class="form-container" id="zftp-form" name="zftp-form" method="GET" action="/zftp">
+                    <article class="article-container">
+                        <table>
+                            <caption>File(s) transfer status</caption>
+                            <thead>
+                                <tr>
+                                    <th>FT#</th>
+                                    <th>Source filename</th>
+                                    <th>Destination filename</th>
+                                    <th>Status</th>
+                                    <th>Message</th>
+                                </tr>
+                            </thead>    
+                            <tbody>
+                                % failure = False
+                                % for trsfr in statuses.keys():
+                                    % status = statuses[trsfr]["status"]
+                                    % source = statuses[trsfr]["sourcefile"]
+                                    % dest = statuses[trsfr]["destfile"]
+                                    % message = statuses[trsfr]["message"]
+                                    <tr>
+                                        <td>{{trsfr}}</td>
+                                        <td>{{source.replace("'","")}}</td>
+                                        <td>{{dest}}</td>
+                                        % if status == "success":
+                                            <td style="color:green">&#10004;</td>
+                                        % else:
+                                            % failure = True
+                                            <td style="color:crimson">&#10008;</td>
+                                        % end
+                                        <td>{{message}}</td>
+                                    </tr>
+                                % end                        
+                            </tbody>
+                        </table>
+                    </article>
+                    <article class="article-container">
+                        % if failure:
+                        <button id="submit1-btn" type="submit" value="submit1-btn">Fix the issue</button>
+                        % else:
+                        <button id="submit2-btn" type="submit" value="submit2-btn">Back</button>
+                        % end
+                    </article>
+                </form>
+            </section>
+            <footer>
+                <h6><a href="http://sarakuma.net" target="_blank">a pythonista</a></h6>
+            </footer>
+        </body>
+    </html>

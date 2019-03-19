@@ -1,0 +1,107 @@
+html, body {
+    margin: 0;
+    height: 100vh;
+    background-color: beige;
+}
+
+.body-container {
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    font-family: 'Slabo 27px', serif;
+}
+
+header {
+    background-color: azure;
+    color:coral;
+}
+
+h1 {
+    text-align: center;
+}
+
+select {
+    font-family: 'Slabo 27px', serif;
+    height: 3em;
+    width: 10em;
+    border: none;
+    padding: 5px 5px;
+    background-color:skyblue;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="password"]  {
+    font-family: 'Slabo 27px', serif;
+    height: 3em;
+    width: 20em;
+    border: 2px solid #F9E79F;
+    border-radius: 5px;
+}
+
+.form-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.article-container {
+    background-color: antiquewhite;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+button {
+    border: none;
+    height: 2em;
+    width: 2em;
+    background-color: salmon;
+    color: white;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+#submit-btn {
+    border: none;
+    height: 2em;
+    width: 5em;
+    background-color: skyblue;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+#submit-btn:hover {
+    cursor: pointer;
+}
+
+.section-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+aside {
+    text-align: center;
+    font-weight: bold;
+    color: salmon;
+    width: 20em;
+}
+
+footer {
+    background-color: azure;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}

@@ -1,0 +1,66 @@
+html, body {
+    margin: 0;
+    height: 100vh;
+    background-color: beige;
+}
+
+.body-container {
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    font-family: 'Slabo 27px', serif;
+}
+
+header {
+    background-color: azure;
+    color:coral;
+}
+
+h1 {
+    text-align: center;
+}
+
+.section-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+th, td {
+  border-bottom: 1px solid cornflowerblue;
+  padding: 20px;
+}
+
+.form-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+#submit1-btn, #submit2-btn {
+    border: none;
+    height: 3em;
+    width: 6em;
+    background-color: skyblue;
+    font-weight: bold;
+    border-radius: 2px;
+    color: white;
+}
+
+#submit1-btn:hover, #submit2-btn:hover {
+    cursor: pointer;
+}
+
+footer {
+    background-color: azure;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}

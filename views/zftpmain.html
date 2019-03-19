@@ -1,0 +1,150 @@
+<DOCTYPE! html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>zFTP</title>
+        <link href="/static/zftpmain.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    </head>
+    <body class="body-container">
+        <header>
+            <h1>Qucik & easy file transfers for mainframe folks</h1>
+        </header>
+        <section class="section-container">
+            <form class="form-container" id="zftp-form" name="zftp-form" method="POST" action="/zftp">
+                <article class="article-container">
+                    <select id="machine-sel" onchange="updateTextPlaceholderValue()">
+                        <option value="hostname" selected>Hostname</option>
+                        <option value="ipad">IP address</option>
+                    </select>
+                    <input type="text" name="machine" placeholder="enter your hostname" required value="{{machine}}">
+                </article>
+                <article class="article-container">
+                    <input type=text name="userid" maxlength=8 placeholder="Mainframe UserID" required value="{{userid}}">
+                    <input type=password name="pswd" maxlength=8 placeholder="Mainframe Password" required value="{{pswd}}">
+                </article>
+                <article class="article-container">
+                    <div>
+                        <button type="button" name="btnp">+</button>
+                        <button type="button" name="btnm">-</button>
+                        <button id="submit-btn" type="submit" value="submit-btn">Transfer</button>
+                    </div>
+                </article>
+                % if not anyerror:
+                    <article class="article-container">
+                        <input type="hidden" name="trsfrno1" value={{ftno}}>
+                        <span>FT#</span>
+                        <span>{{ftno}}</span>
+                        <fieldset>
+                            <legend>Verb?</legend>
+                            <div>
+                                <input type="radio" name="ftpverb-radio1" value="receive" {{checked1}}>
+                                <label for="ftpverb-radio1">Recieve data from mainframe</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="ftpverb-radio1" value="send" {{checked2}}>
+                                <label for="ftpverb-radio1">Send data to mainframe</label>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Format?</legend>
+                            <div>
+                                <input type="radio" name="ftpformat-radio1" value="text" {{checked3}}>
+                                <label for="ftpformat-radio1">Text</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="ftpformat-radio1" value="binary" {{checked4}}>
+                                <label for="ftpformat-radio1">Binary</label>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Files?</legend>
+                            <div>
+                                <input type=text name="dsn1" maxlength=44 placeholder="Mainframe dataset name" title="Please enter DSN without quotes" required value="{{dsn}}">
+                            </div>
+                            <div>
+                                <input type=text name="filename1" placeholder="Client file name" title="Please specify the absolute path of the file" required value="{{filname}}">
+                            </div>
+                        </fieldset>
+                    </article>
+                % else:
+                    % for k1,v1 in statuses.items():
+                    % #print(k1, v1["format"])
+                        % if v1["status"] == "failure":
+                            % trsfrname = "trsfrno" + str(k1)
+                            % verbname = "ftpverb-radio" + str(k1)
+                            % formatname = "ftpformat-radio" + str(k1)
+                            % input1name = "dsn" + str(k1)
+                            % input2name = "filename" + str(k1)
+                            % if v1["verb"] == "receive":
+                                % checked1 = "checked"
+                                % checked2 = ""
+                                % dsn = v1["sourcefile"].replace("'","")
+                                % filname = v1["destfile"]
+                            %end
+                            % if v1["verb"] == "send":
+                                % checked1 = ""
+                                % checked2 = "checked"
+                                % filname = v1["sourcefile"]
+                                % dsn = v1["destfile"].replace("'","")
+                            % end
+                            % if v1["format"] == "text":
+                                % checked3 = "checked"
+                                % checked4 = ""
+                            % end
+                            % if v1["format"] == "binary":
+                                % checked3 = ""
+                                % checked4 = "checked"
+                            % end
+                            <article class="article-container">
+                                <input type="hidden" name="{{trsfrname}}" value={{k1}}>
+                                <span>FT#</span>
+                                <span>{{k1}}</span>
+                                <fieldset>
+                                    <legend>Verb?</legend>
+                                    <div>
+                                        <input type="radio" name={{verbname}} value="receive" {{checked1}}>
+                                        <label for={{verbname}}>Recieve data from mainframe</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name={{verbname}} value="send" {{checked2}}>
+                                        <label for={{verbname}}>Send data to mainframe</label>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Format?</legend>
+                                    <div>
+                                        <input type="radio" name={{formatname}} value="text" {{checked3}}>
+                                        <label for={{formatname}}>Text</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name={{formatname}} value="binary" {{checked4}}>
+                                        <label for={{formatname}}>Binary</label>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Files?</legend>
+                                    <div>
+                                        <input type=text name="{{input1name}}" maxlength=44 placeholder="Mainframe dataset name"
+                                            title="Please enter DSN without quotes" required value="{{dsn}}">
+                                    </div>
+                                    <div>
+                                        <input type=text name="{{input2name}}" placeholder="Client file name"
+                                            title="Please specify the absolute path of the file" required value="{{filname}}">
+                                    </div>
+                                </fieldset>
+                            </article>
+                        % end
+                    % end
+                % end
+            </form>
+            <aside>
+                <p>Welcome!</p>
+            </aside>
+        </section>
+        <footer>
+            <h6><a href="http://sarakuma.net" target="_blank">a pythonista</a></h6>
+        </footer>
+        <script src="/static/zftpmain.js"></script>
+    </body>
+</html>
