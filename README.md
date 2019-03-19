@@ -16,7 +16,7 @@ with mainframe ftp-server
 * suffice error handling and feedback
 
 ## usage
-1. python main.py
+1. run python main.py
 2. launch browser @socket - http://localhost:9001/zftp
 
 ### to-dos
