@@ -1,4 +1,4 @@
-# python-zftp - A FTP client for mainframe
+# pyzftp - A FTP client for mainframe
 
 repo hold scripts that are needed to transfer multiple text/binary files (concurrently) in and out of mainframe using FTP
 
@@ -30,3 +30,4 @@ with mainframe as ftp-server
 * improve error handling
 * improve html layout & aesthetics
 * increase the max limit to 50
+* 100% PEP8 styling
