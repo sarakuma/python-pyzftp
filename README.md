@@ -5,7 +5,7 @@ repo hold scripts that are needed to transfer multiple text/binary files in and 
 3.7.1
 
 ## dependencies
-bottle micro web framework 0.13
+bottle micro web framework 0.12
 
 ## ftp-client usage
 with mainframe ftp-server
