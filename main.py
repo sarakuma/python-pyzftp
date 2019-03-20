@@ -2,13 +2,13 @@
 Description: This is a module to transfer multiple text/binary files in and out of mainframe using FTP
 Date created: 3/18/2019
 Python Version: 3.7.1
-Dependencies: Bottle micro web framework
-File system: Windows
+Dependencies: Bottle micro web framework 0.12
+File system: Linux
 '''
 
 __author__ = "Kumar Saraboji"
 __version__ = "0.1"
-__license__ = "GPL"
+__license__ = "None"
 __email__ = "me.kumar.saraboji@gmail.com"
 __status__ = "development"
 
@@ -205,7 +205,7 @@ def main(template_path):
     @get("/static/<filename>")
     def serveStaticFiles(filename):
         '''Function to serve CSS and JS files'''
-        return static_file(filename, root=r'c:\Users\afukxs2\workspace\pyzftpweb\static')
+        return static_file(filename, root=r'/home/sarakuma/datascientist/python/python-zftp/static')
     
     @route("/zftp", method=["GET","POST"])
     def processForm():
@@ -350,5 +350,5 @@ def main(template_path):
 
 
 if __name__ == "__main__":
-    template_path = r'c:\Users\afukxs2\workspace\pyzftpweb\views'
+    template_path = r'/home/sarakuma/datascientist/python/python-zftp/views'
     main(template_path)
