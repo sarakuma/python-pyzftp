@@ -2,32 +2,36 @@
 
 repo hold scripts that are needed to transfer multiple text/binary files (concurrently) in and out of mainframe using FTP
 
-## python version
+## Python version
 
 3.7.1
 
-## dependencies
+## Dependencies
 
 bottle micro web framework 0.12
 
 ## Usage
 
-with mainframe as ftp-server
+with mainframe as FTP-server
 
-## benefits
+## Benefits
 
 * multi-threaded transfer for quick turn-arounds
 * simultaneous gets and puts
 * suffice error handling and feedback
 
-## usage
+## Instructions
 
 1. run python main.py
 2. launch browser @socket - http://localhost:9001/zftp
 
-### to-dos
+### To-dos
 
 * improve error handling
 * improve html layout & aesthetics
-* increase the max limit to 50
+* increase the max file limit to 50
 * 100% PEP8 styling
+
+### PS
+
+reach out to me.kumar.saraboji@gmail.com for any comments
