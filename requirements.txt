@@ -1,0 +1,7 @@
+bottle==0.12.16
+ebcdic==0.7.0
+httplib2==0.12.1
+pep8==1.7.1
+requests==2.21.0
+requests-oauthlib==1.2.0
+zosftplib==1.0
